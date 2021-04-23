@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Markov
@@ -18,21 +19,24 @@ namespace Markov
 
         public static void init(string text)
         {
-            int orden = 1;
+            //int orden = 1;
             string[] ngrama = { };
             Console.WriteLine("Texto: \n" + text);
             string[] palUnicas = identificarPalabrasUnicas(text);
-            Console.WriteLine(palUnicas.Length);
+            // Console.WriteLine(palUnicas.Length);
 
             /*foreach (String palabra in palUnicas)
             {
                 Console.WriteLine(palabra);
             }*/
 
-            string[][] empa = { };
             for (int i = 0; i < palUnicas.Length; i++)
             {
-                
+                string cadena = palUnicas[i];
+                //string cadena = "ABABBA";
+                int total = Regex.Matches(text, cadena).Count;
+                Console.WriteLine("[" + i + "](" + cadena + "): " + total);
+
             }
 
         }
