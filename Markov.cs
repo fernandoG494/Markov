@@ -23,6 +23,7 @@ namespace Markov
             string[] ngrama = { };
             Console.WriteLine("Texto: \n" + text);
             string[] palUnicas = identificarPalabrasUnicas(text);
+
             // Console.WriteLine(palUnicas.Length);
 
             /*foreach (String palabra in palUnicas)
@@ -33,10 +34,8 @@ namespace Markov
             for (int i = 0; i < palUnicas.Length; i++)
             {
                 string cadena = palUnicas[i];
-                //string cadena = "ABABBA";
                 int total = Regex.Matches(text, cadena).Count;
                 Console.WriteLine("[" + i + "](" + cadena + "): " + total);
-
             }
 
         }
@@ -57,6 +56,11 @@ namespace Markov
             palabrasUnicas = (string[]) arlist.ToArray(typeof(string));
 
             return palabrasUnicas;
+        }
+
+        public static string[] lowerCase(string[] palabras)
+        {
+
         }
     }
 }
