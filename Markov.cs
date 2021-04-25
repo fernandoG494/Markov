@@ -1,66 +1,49 @@
-﻿using System;
+﻿using Markov.Modelos;
+using Markov.Herramientas;
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Markov
 {
     class Markov
     {
-        
-        public Markov(string txt)
+        private int n;
+        private string text;
+        ArrayList ngramas = new ArrayList();
+
+        public Markov(string txt, int n)
         {
-            string text = txt;
-            init(text);
+            text = txt;
+            this.n = n;
         }
 
-        public static void init(string text)
+        public void Method()
         {
-            //int orden = 1;
-            string[] ngrama = { };
-            Console.WriteLine("Texto: \n" + text);
-            string[] palUnicas = identificarPalabrasUnicas(text);
+            ArrayList counter = new ArrayList();
+            /*  
+             *  Generar y dividir en archivos cada uno de los tipos de n-gramas (unigramas,
+             *  bigramas, trigramas, etc.) y contabilizar el numero de veces que ocurren en
+             *  el corpus.
+             */
 
-            // Console.WriteLine(palUnicas.Length);
-
-            /*foreach (String palabra in palUnicas)
-            {
-                Console.WriteLine(palabra);
-            }*/
-
-            for (int i = 0; i < palUnicas.Length; i++)
-            {
-                string cadena = palUnicas[i];
-                int total = Regex.Matches(text, cadena).Count;
-                Console.WriteLine("[" + i + "](" + cadena + "): " + total);
-            }
-
-        }
-
-        public static string[] identificarPalabrasUnicas(string txt)
-        {
-            string[] palabrasUnicas = { };
-            string[] split = txt.Split(' ');
-            var arlist = new ArrayList();
-
+            string[] split = this.text.Split(' ');
             for (int i = 0; i < split.Length; i++)
             {
-                if (!arlist.Contains(split[i]))
-                {
-                    arlist.Add(split[i]);
-                }
+                if ((i + n) != split.Length) ngramas.Add(split[i] + " " + split[i + n]);
             }
-            palabrasUnicas = (string[]) arlist.ToArray(typeof(string));
 
-            return palabrasUnicas;
-        }
+            // por cada ngrama, recorrer el texto y acumular las veces que aparezca
+            for (int i = 0; i < ngramas.Count; i++)
+            {
+                string palabra = (string)ngramas[i];
+                int total = Regex.Matches(this.text, palabra).Count;
+                counter.Add(new ngrama(palabra, total));
+            }
 
-        public static string[] lowerCase(string[] palabras)
-        {
-
+            Console.WriteLine("Ngramas: " + counter.Count);
+            tools tools = new tools();
+            tools.PrintCounter(counter);
         }
     }
 }
