@@ -13,12 +13,12 @@ namespace Markov
         static void Main(string[] args)
         {
             Console.WriteLine("\t === Markov chains ===");
-            string txt = "El unicornio es una es una es una criatura mitologica representada habitualmente " +
+            string txt = "El unicornio es una es una criatura mitologica representada habitualmente " +
                 "como un caballo blanco con patas de antilope, barba de chivo y un cuerno en la frente.";
             string txt1 = "El unicornio es una criatura mitologica representada habitualmente " +
                 "como un caballo blanco con patas de antilope, barba de chivo y un cuerno en la frente. " +
-                "en las representaciones modernas, sin embargo, es identico a un caballo, " +
-                "solo diferenciandose en la existencia del cuerno mencionado. el unicornio es " +
+                "En las representaciones modernas, sin embargo, es identico a un caballo, " +
+                "solo diferenciandose en la existencia del cuerno mencionado. El unicornio es " +
                 "protagonista de numerosas historias y leyendas. En la edad media significaba fuerza" +
                 " y estaba considerado como un animal fabuloso capaz de derrotar a animales mas fuertes " +
                 "fisicamente, incluso elefantes. Existen tres hipotesis que intentan explicar la aparicion " +
@@ -40,8 +40,7 @@ namespace Markov
                 " del frances normando gobelin, nombre originado en el de un fantasma que se decia asolo el " +
                 "pueblo de evreux en el siglo XII,​ de naturaleza maliciosa hacia los humanos.";
 
-            Markov markov = new Markov(txt1, 1);
-            markov.Method();
+            Markov markov = new Markov(txt1);
         }
     }
 }

@@ -1,49 +1,40 @@
-﻿using Markov.Modelos;
-using Markov.Herramientas;
+﻿using MarkovSharp.TokenisationStrategies;
 using System;
 using System.Collections;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Markov
 {
     class Markov
     {
-        private int n;
         private string text;
-        ArrayList ngramas = new ArrayList();
 
-        public Markov(string txt, int n)
+        public Markov(string txt)
         {
             text = txt;
-            this.n = n;
+            Method();
         }
 
-        public void Method()
+        private void Method()
         {
-            ArrayList counter = new ArrayList();
-            /*  
-             *  Generar y dividir en archivos cada uno de los tipos de n-gramas (unigramas,
-             *  bigramas, trigramas, etc.) y contabilizar el numero de veces que ocurren en
-             *  el corpus.
-             */
+            int numeroCadenas = 4;
+            string[] lines = LineToken(this.text);
+            var model = new StringMarkov(2);
+            model.Learn(lines);
 
-            string[] split = this.text.Split(' ');
-            for (int i = 0; i < split.Length; i++)
+            Console.WriteLine("============================================");
+            for (int i = 0; i < numeroCadenas; i++)
             {
-                if ((i + n) != split.Length) ngramas.Add(split[i] + " " + split[i + n]);
+                Console.WriteLine("[" + i + "]: " + model.Walk().First());
             }
+        }
 
-            // por cada ngrama, recorrer el texto y acumular las veces que aparezca
-            for (int i = 0; i < ngramas.Count; i++)
-            {
-                string palabra = (string)ngramas[i];
-                int total = Regex.Matches(this.text, palabra).Count;
-                counter.Add(new ngrama(palabra, total));
-            }
-
-            Console.WriteLine("Ngramas: " + counter.Count);
-            tools tools = new tools();
-            tools.PrintCounter(counter);
+        private string[] LineToken(string text)
+        {
+            string[] lines = { };
+            Console.WriteLine(text);
+            lines = text.Split('.');
+            return lines;
         }
     }
 }
