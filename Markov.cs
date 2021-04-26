@@ -7,19 +7,19 @@ namespace Markov
 {
     class Markov
     {
-        private string text;
+        private string[] lines;
 
-        public Markov(string txt)
+        public Markov(string[] lines)
         {
-            text = txt;
+            this.lines = lines;
             Method();
         }
 
         private void Method()
         {
             int numeroCadenas = 4;
-            string[] lines = LineToken(this.text);
-            var model = new StringMarkov(2);
+            var model = new StringMarkov();
+            Console.WriteLine("\nTraining ...");
             model.Learn(lines);
 
             Console.WriteLine("============================================");
@@ -27,14 +27,6 @@ namespace Markov
             {
                 Console.WriteLine("[" + i + "]: " + model.Walk().First());
             }
-        }
-
-        private string[] LineToken(string text)
-        {
-            string[] lines = { };
-            Console.WriteLine(text);
-            lines = text.Split('.');
-            return lines;
         }
     }
 }
