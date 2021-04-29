@@ -70,10 +70,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\Grandmaster_of_Demonic_Cultivation_vol2.txt" />
-    <Content Include="Files\Grandmaster_of_Demonic_vol1.txt" />
-    <Content Include="Files\Narrativa_completa_vol1.txt" />
-    <Content Include="Files\Narrativa_completa_vol2.txt" />
+    <Content Include="Resources\Books\Grandmaster_of_Demonic_Cultivation_vol2.txt" />
+    <Content Include="Resources\Books\Grandmaster_of_Demonic_vol1.txt" />
+    <Content Include="Resources\Books\Narrativa_completa_vol1.txt" />
+    <Content Include="Resources\Books\Narrativa_completa_vol2.txt" />
+    <Content Include="Resources\MidiMusic\jm_mozdi.mid" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generated\Midi\" />
+    <Folder Include="Resources\Names\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
