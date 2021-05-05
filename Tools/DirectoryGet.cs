@@ -34,7 +34,8 @@ namespace Markov.Tools
             {
                 path += split[i] + '\\';
             }
-            path += "Resources\\Books\\Narrativa_completa_vol1.txt";
+            path += "Resources\\Books\\Solitario.txt";
+            //path += "Resources\\Books\\Narrativa_completa_vol1.txt";
             //path += "Files\\Narrativa_completa_vol2.txt";
             //path += "Files\\Grandmaster_of_Demonic_vol1.txt";
             //path += "Files\\Grandmaster_of_Demonic_Cultivation_vol2.txt";
