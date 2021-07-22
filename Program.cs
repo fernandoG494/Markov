@@ -21,11 +21,11 @@ namespace Markov
             Console.WriteLine("\t === Random quotes generator ===");
             markov.GenerateQuotes(4);
 
-            Console.WriteLine("\t === Names generator ===");
+            /*Console.WriteLine("\t === Names generator ===");
 
 
             Console.WriteLine("\t ########## Midi Shit ##########");
-            markov.MidiGen();
+            markov.MidiGen();*/
         }
     }
 }
